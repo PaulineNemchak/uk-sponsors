@@ -18,5 +18,5 @@ export type Data = {
 }
 
 export type Routes = string[];
-
-
+export type Cities = string[];
+export type Counties = string[];
