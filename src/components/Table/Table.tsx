@@ -1,63 +1,10 @@
 import styles from './Table.module.css';
-
-const routes: string[] = [
-    'Skilled worker',
-    'Creative Worker',
-    'Global Business Mobility',
-    'Tier 2 Ministers of Religion'
-];
-
-type Employer = {
-    id: number;
-    name: string;
-    city: string;
-    county: string;
-    rating: string;
-    route: string;
-}
-
-type Data = {
-    content: Employer[];
-    pageNum: number;
-    pageSize: number;
-    totalElementsCount: number;
-    totalPagesCount: number;
-    lastPage: boolean;
-}
-
-const data: Data = {
-    "content" : [ {
-        "id" : 68845,
-        "name" : "001 Times Ltd",
-        "city" : "London",
-        "county" : "Hampshire",
-        "rating" : "Temporary Worker (A rating)",
-        "route" : "Creative Worker"
-    }, {
-        "id" : 34445,
-        "name" : "001 Times Ltd",
-        "city" : "London",
-        "county" : "",
-        "rating" : "Worker (A rating)",
-        "route" : "Skilled Worker"
-    }, {
-        "id" : 40502,
-        "name" : "003 Ltd",
-        "city" : "Hounslow",
-        "county" : "",
-        "rating" : "Worker (A rating)",
-        "route" : "Skilled Worker"
-    } ],
-    "pageNum" : 2,
-    "pageSize" : 3,
-    "totalElementsCount" : 69137,
-    "totalPagesCount" : 23046,
-    "lastPage" : false
-}
+import { data, routes } from "../../core/mocks";
 
 export const Table = () => {
-    return <table className={styles.table}>
-        <thead>
+    return (
+        <table className={styles.table}>
+            <thead>
             <tr>
                 <th>Organisation Name</th>
                 <th>Town/City</th>
@@ -88,19 +35,20 @@ export const Table = () => {
                 </th>
             </tr>
         </thead>
-        <tbody>
-            {
-                data.content.map(employer => {
-                    return (
-                       <tr key={employer.id}>
-                           <td>{employer.name}</td>
-                           <td>{employer.city}</td>
-                           <td>{employer.county}</td>
-                           <td>{employer.route}</td>
-                       </tr>
-                    )
-                })
-            }
-        </tbody>
+            <tbody>
+                {
+                    data.content.map(employer => {
+                        return (
+                           <tr key={employer.id}>
+                               <td>{employer.name}</td>
+                               <td>{employer.city}</td>
+                               <td>{employer.county}</td>
+                               <td>{employer.route}</td>
+                           </tr>
+                        )
+                    })
+                }
+            </tbody>
     </table>
+    )
 }
